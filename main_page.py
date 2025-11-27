@@ -190,9 +190,19 @@ def show_texture(name):
 
 def show_shaders(name):
 
+    folder_path = "AxF images/"
+    extension = ".png"
+    file_name = name + extension
+    file_path_png = os.path.join(folder_path, file_name)
+
+    folder_path = "Blender gif/"
+    extension = ".gif"
+    file_name = name + extension
+    file_path_gif = os.path.join(folder_path, file_name)
+
     cols = st.columns(2)
-    cols[0].image(image="images/mock-up fabrication.png", caption="Mock-up fabrication process") # image for AxF
-    cols[1].image(image="images/mock-up examples.png", caption="Examples of Mock-ups")    # gif for blender 
+    cols[0].image(image=file_path_png, caption="AxF shader") # image for AxF
+    cols[1].image(image=file_path_gif, caption="Blender shader")    # gif for blender 
 
     #cols = st.columns(2)
     #cols[0].image(image=images[0],caption=captions[0]) # image for AxF
