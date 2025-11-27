@@ -10,7 +10,7 @@ from openpyxl_image_loader import SheetImageLoader
 
 # Define constant
 # Website modes
-MODES = ("Single mock-up", "Comparison", "Texture images")
+MODES = ("Single mock-up", "Comparison", "Texture images", "Shader")
 COLORMODES = ("Corresponding color mode", "Distinct mode")
 MOCKUP_ATTRIBUTES = (
 ('Pentelic', 'Paros', None), # MARBLES
@@ -187,6 +187,16 @@ def show_texture(name):
     for i in range(0,3):
         cols[i].image(image=images[i],caption=captions[i])
         cols[i].image(image=images[i+3],caption=captions[i+3])
+
+def show_shaders(name):
+
+    cols = st.columns(2)
+    cols[0].image(image="images/mock-up fabrication.png", caption="Mock-up fabrication process") # image for AxF
+    cols[1].image(image="images/mock-up examples.png", caption="Examples of Mock-ups")    # gif for blender 
+
+    #cols = st.columns(2)
+    #cols[0].image(image=images[0],caption=captions[0]) # image for AxF
+    #cols[1].image(image=images[1],caption=captions[1])    # gif for blender 
 
 def get_download_data(names):
     folder_path = "Data new/MA-T12 data/"
@@ -495,6 +505,30 @@ def main():
                 st.write(f"**Mock-up: {name}**")
             with plot_area:
                 show_texture(name)
+
+    # --- modifying for mode "shaders"
+
+    elif st.session_state.mode == MODES[3]:
+        with title_area:
+            st.title("Shaders")
+
+        with description_area: # MODIFY TEXT
+            st.markdown("<span> Texture images of mock-up. The mock-ups have been named using the following convention: Marble_Binder_Pigment_Ground_nLayers. More information in the Home page. </span>", unsafe_allow_html=True)
+
+        with mode_intro_area:
+            st.markdown("<span style='color:grey'>Select one mock-up from the table (by clicking the box at the front of each row) to show its shader demos.</span>", unsafe_allow_html=True)
+            
+        with list_area:
+            queried_mockups = query_mockup(st.session_state.all_mockup_list, mockup_attributes)
+            single_selection_list(queried_mockups) 
+        
+        if st.session_state.selected_names:
+            name = st.session_state.selected_names.pop()
+            st.session_state.selected_names.add(name)
+            with current_name_area:
+                st.write(f"**Mock-up: {name}**")
+            with plot_area:
+                show_shaders(name) # change function
 
 # page_config
 st.set_page_config(
