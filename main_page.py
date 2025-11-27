@@ -14,7 +14,7 @@ MODES = ("Single mock-up", "Comparison", "Texture images", "Shader")
 COLORMODES = ("Corresponding color mode", "Distinct mode")
 MOCKUP_ATTRIBUTES = (
 ('Pentelic', 'Paros', None), # MARBLES
- ('Egg white', 'Punic wax', 'Empty', None), # BINDERS
+ ('Egg white', 'Punic wax', 'Not applied', None), # BINDERS
  ('Cinnabar',
  'Cinnabar + carbon black line',
  'Egyptian blue',
@@ -41,13 +41,13 @@ MOCKUP_ATTRIBUTES = (
  'yellow ochre',
  'yellow ochre mixed with Egyptian blue',
  'yellow ochre over red ochre',
- 'yellow ochre with gypsum (Zecchi)', 'Empty', None), # PIGMENTS # ADDED 'NONE'! 
+ 'yellow ochre with gypsum (Zecchi)', 'Not applied', None), # PIGMENTS # ADDED 'NONE'! 
  ('Calcium carbonate',
  'Egyptian blue with calcite',
  'Lead white',
  'Mixed with calcite',
- 'Empty',None), # GROUNDS
- ("1", "2", "3","many","Empty", None) # NLAYERS
+ 'Not applied',None), # GROUNDS
+ ("1", "2", "3","many","Not applied", None) # NLAYERS
  ) 
 hide_menu = """
 <style>
