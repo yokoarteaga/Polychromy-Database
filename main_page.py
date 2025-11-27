@@ -293,7 +293,7 @@ def main():
                 index= 0,
                 format_func= format_display,                
             )
-        if st.session_state.mode is not MODES[2] or st.session_state.mode is not MODES[3]:
+        if st.session_state.mode == MODES[0] or st.session_state.mode == MODES[1]:
             st.session_state.color_mode = st.radio("Color mode of curves",
                                                    COLORMODES,
                                                    captions=["Use the corresponding mock-up color for each curve", "Use distinct colors for curves"])
