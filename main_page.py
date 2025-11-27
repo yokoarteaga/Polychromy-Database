@@ -188,7 +188,9 @@ def show_texture(name):
         cols[i].image(image=images[i],caption=captions[i])
         cols[i].image(image=images[i+3],caption=captions[i+3])
 
-def show_shaders(name):
+def show_shaders(name): 
+
+    # Define image path and show images
 
     folder_path = "AxF images/"
     extension = ".png"
@@ -207,6 +209,28 @@ def show_shaders(name):
     #cols = st.columns(2)
     #cols[0].image(image=images[0],caption=captions[0]) # image for AxF
     #cols[1].image(image=images[1],caption=captions[1])    # gif for blender 
+
+def get_AxF_data(name):
+
+    folder_path = "AxF data/"
+    extension = ".axf"
+    file_name = name + extension
+    file_path_axf = os.path.join(folder_path, file_name)
+
+    with open(file_path_axf, "rb") as file:
+        data = file.read()
+    return data
+
+def get_Blender_data(name):
+
+    folder_path = "Blender data/"
+    extension = ".blend"
+    file_name = name + extension
+    file_path_blend = os.path.join(folder_path, file_name)
+
+    with open(file_path_blend, "rb") as file:
+        data = file.read()
+    return data
 
 def get_download_data(names):
     folder_path = "Data new/MA-T12 data/"
@@ -274,6 +298,8 @@ def on_query_change():
     sync_selection()
     sync_all_selection()
 
+
+
 def main():
     # Hiding the default top-right menu from streamlit
     st.markdown(hide_menu, unsafe_allow_html=True)
@@ -315,6 +341,8 @@ def main():
     if st.session_state.mode == MODES[2] or st.session_state.mode == MODES[3]:
         current_name_area = st.empty()
     plot_area = st.empty()
+    if st.session_state.mode == MODES[3]:
+        downloadAxF_button_area, downloadBlender_button_area, _ = st.columns([1,2,4])    
     st.markdown("<span style='color:grey'> You can query the mock-ups with the corresponding attribute combinations through the following select boxes</span>", unsafe_allow_html=True)
     mockup_options = st.columns(5)
     reset_button_area, download_button_area, _ = st.columns([1,2,4])
@@ -539,6 +567,15 @@ def main():
                 st.write(f"**Mock-up: {name}**")
             with plot_area:
                 show_shaders(name) # change function
+            
+            # Add buttons to download data 
+            data = get_AxF_data(name)
+            with downloadAxF_button_area:
+                st.download_button( label='Download AxF', data=data, file_name=f'{name}.axf')#, mime='text/csv')
+
+            data = get_Blender_data(name)
+            with downloadBlender_button_area:
+                st.download_button( label='Download Blender', data=data, file_name=f'{name}.blend')#, mime='text/csv')
 
 # page_config
 st.set_page_config(
