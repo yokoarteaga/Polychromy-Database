@@ -10,7 +10,7 @@ from openpyxl_image_loader import SheetImageLoader
 
 # Define constant
 # Website modes
-MODES = ("Single mock-up", "Comparison", "Texture images", "Shader")
+MODES = ("Single mock-up", "Comparison", "Texture images", "Shaders")
 COLORMODES = ("Corresponding color mode", "Distinct mode")
 MOCKUP_ATTRIBUTES = (
 ('Pentelic', 'Paros', None), # MARBLES
