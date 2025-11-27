@@ -293,7 +293,7 @@ def main():
                 index= 0,
                 format_func= format_display,                
             )
-        if st.session_state.mode is not MODES[2]:
+        if st.session_state.mode is not MODES[2] or st.session_state.mode is not MODES[3]:
             st.session_state.color_mode = st.radio("Color mode of curves",
                                                    COLORMODES,
                                                    captions=["Use the corresponding mock-up color for each curve", "Use distinct colors for curves"])
@@ -302,7 +302,7 @@ def main():
     # layout of the main part
     title_area = st.empty()
     description_area = st.empty()
-    if st.session_state.mode == MODES[2]:
+    if st.session_state.mode == MODES[2] or st.session_state.mode == MODES[3]:
         current_name_area = st.empty()
     plot_area = st.empty()
     st.markdown("<span style='color:grey'> You can query the mock-ups with the corresponding attribute combinations through the following select boxes</span>", unsafe_allow_html=True)
