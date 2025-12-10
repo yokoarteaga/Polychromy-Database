@@ -8,6 +8,10 @@ import plotly.graph_objects as go
 import openpyxl
 from openpyxl_image_loader import SheetImageLoader
 
+import requests
+
+import json
+
 # Define constant
 # Website modes
 MODES = ("Single mock-up", "Comparison", "Texture images", "Shaders")
@@ -298,7 +302,11 @@ def on_query_change():
     sync_selection()
     sync_all_selection()
 
-
+def download_file_from_zenodo(name,recordID,ext):
+    url = f"https://zenodo.org/records/{recordID}/files/{name}.{ext}?download=1"
+    response = requests.get(url, stream=True)
+    response.raise_for_status()  # Raise an exception for bad status codes
+    return response.content
 
 def main():
     # Hiding the default top-right menu from streamlit
@@ -568,14 +576,17 @@ def main():
             with plot_area:
                 show_shaders(name) # change function
             
-            # Add buttons to download data 
-            data = get_AxF_data(name)
-            with downloadAxF_button_area:
-                st.download_button( label='Download AxF', data=data, file_name=f'{name}.axf')#, mime='text/csv')
+            with open("zenodo_ID.json","r") as f:
+                file_list = json.load(f)
 
-            data = get_Blender_data(name)
+            # Add buttons to download data 
+            data = download_file_from_zenodo(name,file_list[name],ext="axf")
+            with downloadAxF_button_area:
+                st.download_button( label='Download AxF', data=data, file_name=f'{name}.axf', mime="application/octet-stream")
+
+            data = download_file_from_zenodo(name,file_list[name],ext="blend")
             with downloadBlender_button_area:
-                st.download_button( label='Download Blender', data=data, file_name=f'{name}.blend')#, mime='text/csv')
+                st.download_button( label='Download Blender', data=data, file_name=f'{name}.blend', mime="application/octet-stream")
 
 # page_config
 st.set_page_config(
