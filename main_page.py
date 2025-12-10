@@ -555,6 +555,9 @@ def main():
     # --- modifying for mode "shaders"
 
     elif st.session_state.mode == MODES[3]:
+        with open("zenodo_ID.json","r") as f:
+            file_list = json.load(f)
+    
         with title_area:
             st.title("Shaders")
 
@@ -576,8 +579,7 @@ def main():
             with plot_area:
                 show_shaders(name) # change function
             
-            with open("zenodo_ID.json","r") as f:
-                file_list = json.load(f)
+
 
             # Add buttons to download data 
             data = download_file_from_zenodo(name,file_list[name],ext="axf")
