@@ -303,10 +303,34 @@ def on_query_change():
     sync_all_selection()
 
 def download_file_from_zenodo(name,recordID,ext):
-    url = f"https://zenodo.org/records/{recordID}/files/{name}.{ext}?download=1"
-    response = requests.get(url, stream=True)
-    response.raise_for_status()  # Raise an exception for bad status codes
-    return response.content
+    key_ID = ["17828658", "17828914", "17829754"]
+
+    try:
+        url = f"https://zenodo.org/records/{key_ID[0]}/files/{name}.{ext}?download=1"
+        response = requests.get(url, stream=True)
+        response.raise_for_status()  # Raise an exception for bad status codes
+        return response.content
+    
+    except:
+        try:
+            url = f"https://zenodo.org/records/{key_ID[1]}/files/{name}.{ext}?download=1"
+            response = requests.get(url, stream=True)
+            response.raise_for_status()  # Raise an exception for bad status codes
+            return response.content
+        
+        except:
+            try:
+                url = f"https://zenodo.org/records/{key_ID[2]}/files/{name}.{ext}?download=1"
+                response = requests.get(url, stream=True)
+                response.raise_for_status()  # Raise an exception for bad status codes
+                return response.content
+            
+            except:
+                pass
+    #url = f"https://zenodo.org/records/{recordID}/files/{name}.{ext}?download=1"
+    #response = requests.get(url, stream=True)
+    #response.raise_for_status()  # Raise an exception for bad status codes
+    #return response.content
 
 def main():
     # Hiding the default top-right menu from streamlit
@@ -555,8 +579,8 @@ def main():
     # --- modifying for mode "shaders"
 
     elif st.session_state.mode == MODES[3]:
-        with open("zenodo_ID.json","r") as f:
-            file_list = json.load(f)
+        #with open("zenodo_ID.json","r") as f:
+        #    file_list = json.load(f)
     
         with title_area:
             st.title("Shaders")
@@ -582,11 +606,11 @@ def main():
 
 
             # Add buttons to download data 
-            data = download_file_from_zenodo(name,file_list[name],ext="axf")
+            data = download_file_from_zenodo(name,None,ext="axf")
             with downloadAxF_button_area:
                 st.download_button( label='Download AxF', data=data, file_name=f'{name}.axf', mime="application/octet-stream")
 
-            data = download_file_from_zenodo(name,file_list[name],ext="blend")
+            data = download_file_from_zenodo(name,None,ext="blend")
             with downloadBlender_button_area:
                 st.download_button( label='Download Blender', data=data, file_name=f'{name}.blend', mime="application/octet-stream")
 
