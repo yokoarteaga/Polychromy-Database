@@ -608,13 +608,13 @@ def main():
             # Add buttons to download data 
             
             with downloadAxF_button_area:
-                #data = download_file_from_zenodo(name,None,ext="axf")
-                st.download_button( label='Download AxF', data=download_file_from_zenodo(name,None,ext="axf"), file_name=f'{name}.axf', mime="application/octet-stream")
+                data = download_file_from_zenodo(name,None,ext="axf")
+                st.download_button( label='Download AxF', data=data, file_name=f'{name}.axf', mime="application/octet-stream")
             
 
             with downloadBlender_button_area:
-                #data = download_file_from_zenodo(name,None,ext="blend")
-                st.download_button( label='Download Blender', data=download_file_from_zenodo(name,None,ext="blend"), file_name=f'{name}.blend', mime="application/octet-stream")
+                data = download_file_from_zenodo(name,None,ext="blend")
+                st.download_button( label='Download Blender', data=data, file_name=f'{name}.blend', mime="application/octet-stream")
             
 
 # page_config
