@@ -53,7 +53,6 @@ PAR_PW_RO+YO_NG_3,Paros,Punic wax,red ochre mixed with yellow ochre,Not applied,
 PAR_PW_RO+YO_NG_1,Paros,Punic wax,red ochre mixed with yellow ochre,Not applied,1
 PAR_PW_ROz_NG_1,Paros,Punic wax,red ochre with gypsum (Zecchi),Not applied,1
 PAR_PW_RLk_NG_2,Paros,Punic wax,red lake Carminic (Kremer),Not applied,2
-PAR_PW_ROz_NG_2,Paros,Punic wax,red ochre with gypsum (Zecchi),Not applied,2
 PAR_PW_RO_NG_1,Paros,Punic wax,red ochre,Not applied,1
 PAR_PW_RO_MC_2,Paros,Punic wax,red ochre,Mixed with calcite,2
 PAR_PW_RO_PB_2,Paros,Punic wax,red ochre,Lead white,2
@@ -210,7 +209,6 @@ PEN_NB_NP_CC+EB_0,Pentelic,Not applied,Not applied,Egyptian blue with calcite,No
 PEN_NB_NP_CC_0,Pentelic,Not applied,Not applied,Calcium carbonate,Not applied
 PAR_NB_NP_PB_0,Paros,Not applied,Not applied,Lead white,Not applied
 PAR_NB_NP_CC_0,Paros,Not applied,Not applied,Calcium carbonate,Not applied
-PEN_PW_CN+_NG_1,Pentelic,Punic wax,Cinnabar + carbon black line,Not applied,1
 PEN_NB_NP_NG_0,Pentelic,Not applied,Not applied,Not applied,Not applied
 PAR_NB_NP_NG_0,Paros,Not applied,Not applied,Not applied,Not applied
 PEN_PW_RO+YO_NG_3,Pentelic,Punic wax,red ochre mixed with yellow ochre,Not applied,3
