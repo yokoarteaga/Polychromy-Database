@@ -1,5 +1,5 @@
 # Interactive Ancient Polychromy Database 
-https://ancientpolychromy.streamlit.app/
+https://ancientpolychromy.streamlit.app
 
 The website has three modes:
 - **Single mock-up**： this mode allows users to select one mock-up from the table to display its reflectance spectra on an interactive plot. Users also have the option to download the plot as a PNG file and the spectral data as a CSV file.
