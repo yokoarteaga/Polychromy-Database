@@ -616,9 +616,8 @@ def main():
 
             with downloadBlender_button_area:
                 #data = download_file_from_zenodo(name,None,ext="blend")
-                blend_ID = ["20817893", "20818024", "20818049"]
+                blend_ID = ["20817894", "20818025", "20818050"]
                 st.download_button( label='Download Blender', data=download_file_from_zenodo(name, key_ID=blend_ID, ext="blend"), file_name=f'{name}.blend', mime="application/octet-stream")
-            
 
 # page_config
 st.set_page_config(
