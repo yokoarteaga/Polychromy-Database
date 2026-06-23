@@ -302,9 +302,9 @@ def on_query_change():
     sync_selection()
     sync_all_selection()
 
-def download_file_from_zenodo(name,recordID,ext):
+def download_file_from_zenodo(name,key_ID,ext):
     # key_ID = ["17828658", "17828914", "17897928"]
-    key_ID = ["17828658", "17828914", "20817534"]
+    # key_ID = ["17828658", "17828914", "20817534"]
 
     try:
         url = f"https://zenodo.org/records/{key_ID[0]}/files/{name}.{ext}?download=1"
@@ -610,12 +610,14 @@ def main():
             
             with downloadAxF_button_area:
                 #data = download_file_from_zenodo(name,None,ext="axf")
-                st.download_button( label='Download AxF', data=download_file_from_zenodo(name,None,ext="axf"), file_name=f'{name}.axf', mime="application/octet-stream")
+                axf_ID = ["17828658", "17828914", "20817534"]
+                st.download_button( label='Download AxF', data=download_file_from_zenodo(name, key_ID=axf_ID, ext="axf"), file_name=f'{name}.axf', mime="application/octet-stream")
             
 
             with downloadBlender_button_area:
                 #data = download_file_from_zenodo(name,None,ext="blend")
-                st.download_button( label='Download Blender', data=download_file_from_zenodo(name,None,ext="blend"), file_name=f'{name}.blend', mime="application/octet-stream")
+                blend_ID = ["20817893", "20818024", "20818049"]
+                st.download_button( label='Download Blender', data=download_file_from_zenodo(name, key_ID=blend_ID, ext="blend"), file_name=f'{name}.blend', mime="application/octet-stream")
             
 
 # page_config
