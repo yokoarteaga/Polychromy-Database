@@ -621,7 +621,7 @@ def main():
 
 # page_config
 st.set_page_config(
-    page_title='PolyApp',
+    page_title='Pigment Spectral',
     layout="wide",
     initial_sidebar_state="expanded",
 )
